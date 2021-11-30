@@ -243,7 +243,67 @@ class BigInteger extends BaseBigNumber
 
     public function multiply(BaseBigNumber $secondNumber): string
     {
-        throw new NotImplementedException();
+        // Not implement other big number type
+        if ($secondNumber->mType != Constants::INT_TYPE) {
+            return 'NaN';
+        }
+
+        $isNegative1 = $this->mValue[0] == '-';
+        $isNegative2 = $secondNumber->mValue[0] == '-';
+        $strFirstNum = $isNegative1 ? substr($this->mValue, 1) : $this->mValue;
+        $strSecondNum = $isNegative1 ? substr($secondNumber->mValue, 1) : $secondNumber->mValue;
+        $hasNegativeResult = false;
+        $result = '';
+
+        if ($isNegative1 != $isNegative2) {
+            $hasNegativeResult = true;
+        }
+
+        if ($strFirstNum == '0' || $strSecondNum == '0') {
+            return 0;
+        }
+
+        if ($strFirstNum == '1') {
+            $result = $strSecondNum;
+        } else if ($strSecondNum == '1') {
+            $result = $strFirstNum;
+        } else {
+            $length1 = strlen($strFirstNum);
+            $length2 = strlen($strSecondNum);
+            $indexDigit1 = 0;
+            $stored = array_fill(0, $length1 + $length2, 0);
+
+            for ($i = $length1 - 1; $i > -1; $i--) {
+                $digit1 = $strFirstNum[$i];
+                $indexDigit2 = 0;
+                $carry = 0;
+
+                for ($j = $length2 - 1; $j > -1; $j--) {
+                    $digit2 = $strSecondNum[$j];
+                    $sum = $digit1 * $digit2 + $stored[$indexDigit1 + $indexDigit2] + $carry;
+                    $carry = (int)floor($sum / 10);
+//                    dump($sum, $carry, $sum % 10);
+                    $stored[$indexDigit1 + $indexDigit2] = $sum % 10;
+                    $indexDigit2++;
+                }
+
+                $stored[$indexDigit1 + $indexDigit2] += $carry;
+                $indexDigit1++;
+            }
+
+            $i = $length1 + $length2 - 1;
+
+            while ($i > -1 && $stored[$i] == 0) {
+                $i--;
+            }
+
+            while ($i > -1) {
+                $result = $result . $stored[$i];
+                $i--;
+            }
+        }
+
+        return $hasNegativeResult ? '-' . $result : $result;
     }
 
     #endregion
