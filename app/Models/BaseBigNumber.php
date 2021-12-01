@@ -12,7 +12,6 @@ abstract class BaseBigNumber
     #region Properties
 
     protected string $mRegexNumber;
-    protected int $mType;
     protected string $mValue;
 
     #endregion

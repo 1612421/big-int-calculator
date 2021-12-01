@@ -17,7 +17,6 @@ class BigInteger extends BaseBigNumber
     public function __construct(string $value)
     {
         $this->mRegexNumber = '/^-?[0-9]+$/';
-        $this->mType = Constants::INT_TYPE;
         $value = $this->normalize($value);
 
         parent::__construct($value);
@@ -87,7 +86,7 @@ class BigInteger extends BaseBigNumber
     public function add(BaseBigNumber $secondNumber): string
     {
         // Not implement other big number type
-        if ($secondNumber->mType != Constants::INT_TYPE) {
+        if (get_class($secondNumber) != BigInteger::class) {
             return 'NaN';
         }
 
@@ -166,7 +165,7 @@ class BigInteger extends BaseBigNumber
     public function sub(BaseBigNumber $secondNumber): string
     {
         // Not implement other big number type
-        if ($secondNumber->mType != Constants::INT_TYPE) {
+        if (get_class($secondNumber) != BigInteger::class) {
             return 'NaN';
         }
 
@@ -244,14 +243,14 @@ class BigInteger extends BaseBigNumber
     public function multiply(BaseBigNumber $secondNumber): string
     {
         // Not implement other big number type
-        if ($secondNumber->mType != Constants::INT_TYPE) {
+        if (get_class($secondNumber) != BigInteger::class) {
             return 'NaN';
         }
 
         $isNegative1 = $this->mValue[0] == '-';
         $isNegative2 = $secondNumber->mValue[0] == '-';
         $strFirstNum = $isNegative1 ? substr($this->mValue, 1) : $this->mValue;
-        $strSecondNum = $isNegative1 ? substr($secondNumber->mValue, 1) : $secondNumber->mValue;
+        $strSecondNum = $isNegative2 ? substr($secondNumber->mValue, 1) : $secondNumber->mValue;
         $hasNegativeResult = false;
         $result = '';
 
@@ -282,7 +281,6 @@ class BigInteger extends BaseBigNumber
                     $digit2 = $strSecondNum[$j];
                     $sum = $digit1 * $digit2 + $stored[$indexDigit1 + $indexDigit2] + $carry;
                     $carry = (int)floor($sum / 10);
-//                    dump($sum, $carry, $sum % 10);
                     $stored[$indexDigit1 + $indexDigit2] = $sum % 10;
                     $indexDigit2++;
                 }

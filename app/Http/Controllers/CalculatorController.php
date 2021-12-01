@@ -29,7 +29,6 @@ class CalculatorController extends Controller
         $validators = $request->validate([
            'calculation' => ['required', 'string', "regex:{$this->mCalculationRegex}"]
         ]);
-
         $calculation = $validators['calculation'];
         preg_match($this->mCalculationRegex, $calculation, $matches);
         $firstNum = new BigInteger($matches[1]);
