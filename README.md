@@ -3,7 +3,8 @@
 1. [Information of the project](#info)
 2. [My work](#my-work)
 3. [Code structure](#code-structure)
-4. [Request handling process](#request-workflow)
+4. [Memory and algorithm](#memory-algorithm)
+5. [Request handling process](#request-workflow)
 
 ## 1. <a name="info"></a> Information of the project
 - github: https://github.com/1612421/big-int-calculator
@@ -20,7 +21,12 @@
 ## 3. <a name="code-structure"></a> Code structure
 ![Class diagram](docs/ClassDiagram.png?raw=true "Class diagram")
 
-## 4. a name="request-workflow"></a>Request handling process
+## 4. <a name="memory-algorithm"></a>Memory and algorithm
+- function "add": O(n) both memory and algorithm
+- function "sub": O(n) both memory and algorithm 
+- function "multiply": algorithm O(n*m) and memory O(n);
+
+## 5. <a name="request-workflow"></a>Request handling process
 - The request via route component come to middleware
 - Middleware check CSRF token and forward to next layer, if fail, stop and response
 - After the middlewares, the request will come to controller
