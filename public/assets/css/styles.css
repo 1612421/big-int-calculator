@@ -1,4 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');*/
+/*body {*/
+/*    height: 100vh;*/
+/*    background-color: #ecf0f1;*/
+/*    padding: 1.5rem;*/
+/*    margin: 0;*/
+/*}*/
+
 .calculator {
     padding: 10px;
     border-radius: 1em;
@@ -8,6 +15,7 @@
     background-color: #191b28;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
+
 .display-box {
     font-family: 'Orbitron', sans-serif;
     background-color: #dcdbe1;
@@ -17,6 +25,7 @@
     width: 100%;
     height: 65%;
 }
+
 .button {
     font-family: 'Orbitron', sans-serif;
     background-color: #64278f;
@@ -27,12 +36,14 @@
     height: 70%;
     outline: none;
 }
+
 .button:active {
     background: #e5e5e5;
     -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
     -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
     box-shadow: inset 0px 0px 5px #c1c1c1;
 }
+
 .error {
     position: fixed;
     z-index: 999;
@@ -45,4 +56,45 @@
     color: #D8000C;
     background-color: #FFBABA;
     background-image: url('https://i.imgur.com/GnyDvKN.png');
+}
+
+.hoverable:hover {
+    background-color: #E3E3E3;
+}
+
+.container {
+    margin: 30px auto auto auto;
+    background-color: #fdfdfd;
+    height: 250px;
+    width: 40%;
+    border-radius: 6px;
+    box-shadow: 0 4px 28px rgba(123, 151, 158, .25);
+    border: 1px solid #d6dee1;
+    padding: 1rem;
+    overflow: auto;
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
 }

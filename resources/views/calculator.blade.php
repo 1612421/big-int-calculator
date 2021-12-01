@@ -10,11 +10,11 @@
 <form id="calculationForm" method="POST" action="/">
     <table class="calculator">
         @csrf()
-        <div class="error" id="mess">Error message</div>
+        <div class="error" id="errorBox" hidden>Error message</div>
         <tr>
             <td colspan="3">
                 <input class="display-box" type="text" id="result" name="calculation"
-{{--                       pattern="^(\-?[0-9]+) ?(\+|\-|\*) ?(\-?[0-9]+)$"/>--}}
+                    {{--                       pattern="^(\-?[0-9]+) ?(\+|\-|\*) ?(\-?[0-9]+)$"--}}
                 />
             </td>
             <!-- clearScreen() function clear all the values -->
@@ -50,6 +50,10 @@
         </tr>
     </table>
 </form>
+
+<div id="history" class="container custom-scrollbar" >
+
+</div>
 
 <script type="text/javascript" src="assets/js/script.js"></script>
 </body>
