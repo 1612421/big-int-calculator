@@ -15,6 +15,7 @@
 - Write down features that the project will have 
 - Design UI and APIs
 - Design components such as class, interface, abstract, etc. Then I will develop BE and complete APIs
+- Write unit test
 - Develop FE base on UI mock before
 - Call API and fill data to UI
 
